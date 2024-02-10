@@ -25,7 +25,7 @@ jobs:
           -scheme LightCommander \
           -configuration Release
         
-        echo "{APPLICATION_PATH}=${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}" >> $GITHUB_OUTPUT
+        echo "APPLICATION_PATH=${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}" >> $GITHUB_OUTPUT
 
     - name: Create DMG
       run: |
