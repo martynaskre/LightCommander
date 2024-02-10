@@ -30,7 +30,7 @@ jobs:
     - name: Create DMG
       run: |
         npm i -g create-dmg
-        create-dmg ${{ steps.build.outputs.APPLICATION_PATH }}/Release/LightCommander.app
+        create-dmg ${{ steps.build.outputs.APPLICATION_PATH }}/Release/LightCommander.app --overwrite --dmg-title=LightCommander || true
 
     - name: 'Upload Application Bundle'
       run: gh release upload ${{ github.ref }} LightCommander.dmg
