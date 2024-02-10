@@ -27,12 +27,10 @@ jobs:
     - name: Create DMG
       run: |
         npm i -g create-dmg
-        create-dmg \
-          "$RUNNER_TEMP/LightCommander.dmg" \
-          "~/Library/Developer/Xcode/DerivedData/LightCommander/Build/Products/Release/Light Commander.app"
+        create-dmg "~/Library/Developer/Xcode/DerivedData/LightCommander/Build/Products/Release/Light Commander.app"
 
     - name: 'Upload Application Bundle'
-      run: gh release upload ${{ github.ref }} $RUNNER_TEMP/LightCommander.dmg
+      run: gh release upload ${{ github.ref }} LightCommander.dmg
       env:
         GITHUB_TOKEN: ${{ github.TOKEN }}
       shell: bash
