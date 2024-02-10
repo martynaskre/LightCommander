@@ -32,8 +32,11 @@ jobs:
         npm i -g create-dmg
         create-dmg ${{ steps.build.outputs.APPLICATION_PATH }}/Release/LightCommander.app --overwrite --dmg-title=LightCommander || true
 
-    - name: 'Upload Application Bundle'
-      run: gh release upload ${{ github.ref }} LightCommander.dmg
-      env:
-        GITHUB_TOKEN: ${{ github.TOKEN }}
-      shell: bash
+    - name: Upload Binary To Release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: LightCommander*.dmg
+        asset_name: LightCommander.dmg
+        tag: ${{ github.ref }}
+        overwrite: true
