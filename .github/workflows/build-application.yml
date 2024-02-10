@@ -1,0 +1,38 @@
+name: Build Application
+
+on:
+  push:
+    tags:
+      - '*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build macOS App
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+        
+    - name: Build macOS Application
+      run: |
+        xcodebuild \
+          -project LightCommander.xcodeproj \
+          -scheme LightCommander \
+          -configuration Release
+
+    - name: Create DMG
+      run: |
+        npm i -g create-dmg
+        create-dmg \
+          "$RUNNER_TEMP/LightCommander.dmg" \
+          "~/Library/Developer/Xcode/DerivedData/LightCommander/Build/Products/Release/Light Commander.app"
+
+    - name: 'Upload Application Bundle'
+      run: gh release upload ${{ github.ref }} $RUNNER_TEMP/LightCommander.dmg
+      env:
+        GITHUB_TOKEN: ${{ github.TOKEN }}
+      shell: bash
