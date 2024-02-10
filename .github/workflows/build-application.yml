@@ -26,7 +26,7 @@ jobs:
           -configuration Release \
           clean archive
         
-        echo "APPLICATION_PATH=$(xcodebuild -project LightCommander.xcodeproj -scheme LightCommander -configuration Release -showBuildSettings 2>/dev/null | awk '$1 == "BUILD_DIR" {print $3; exit}')"
+        echo "APPLICATION_PATH=$(xcodebuild -project LightCommander.xcodeproj -scheme LightCommander -configuration Release -showBuildSettings 2>/dev/null | awk '$1 == "BUILD_DIR" {print $3; exit}')" >> $GITHUB_OUTPUT
 
     - name: Create DMG
       run: |
