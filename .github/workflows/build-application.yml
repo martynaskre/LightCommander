@@ -34,7 +34,9 @@ jobs:
         find . -maxdepth 1 -type f -name 'LightCommander*.dmg' -print -quit | while read -r file; do [ -f "$file" ] && mv "$file" "$(echo "$file" | sed 's/LightCommander.*\.dmg/LightCommander.dmg/')"; done
 
     - name: Upload Application DMG
-      run: gh release upload ${{ github.ref }} LightCommander.dmg
-      env:
-        GITHUB_TOKEN: ${{ github.TOKEN }}
-      shell: bash
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: LightCommander.dmg
+        tag: ${{ github.ref }}
+        overwrite: true
