@@ -23,14 +23,16 @@ jobs:
         xcodebuild \
           -project LightCommander.xcodeproj \
           -scheme LightCommander \
-          -configuration Release
+          -configuration Release \
+          clean archive
         
-        echo "APPLICATION_PATH=${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}" >> $GITHUB_OUTPUT
+        echo "APPLICATION_PATH=$(xcodebuild -project LightCommander.xcodeproj -scheme LightCommander -configuration Release -showBuildSettings 2>/dev/null | awk '$1 == "BUILD_DIR" {print $3; exit}')"
 
     - name: Create DMG
       run: |
+        echo $ARCHIVE_PATH
         npm i -g create-dmg
-        create-dmg ${{ steps.build.outputs.APPLICATION_PATH }}
+        create-dmg ${{ steps.build.outputs.APPLICATION_PATH }}/Release/LightCommander.app
 
     - name: 'Upload Application Bundle'
       run: gh release upload ${{ github.ref }} LightCommander.dmg
