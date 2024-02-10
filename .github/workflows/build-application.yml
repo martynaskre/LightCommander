@@ -18,16 +18,19 @@ jobs:
       uses: actions/checkout@v4
         
     - name: Build macOS Application
+      id: build
       run: |
         xcodebuild \
           -project LightCommander.xcodeproj \
           -scheme LightCommander \
           -configuration Release
+        
+        echo "{APPLICATION_PATH}=${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}" >> $GITHUB_OUTPUT
 
     - name: Create DMG
       run: |
         npm i -g create-dmg
-        create-dmg "~/Library/Developer/Xcode/DerivedData/LightCommander/Build/Products/Release/Light Commander.app"
+        create-dmg ${{ steps.build.outputs.APPLICATION_PATH }}
 
     - name: 'Upload Application Bundle'
       run: gh release upload ${{ github.ref }} LightCommander.dmg
