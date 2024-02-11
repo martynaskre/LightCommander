@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "whatsnewkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SvenTiigi/WhatsNewKit.git",
+      "state" : {
+        "revision" : "a81f41ea63870205f281b8d051b264f7b303f6d4",
+        "version" : "2.2.0"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 import AppIntents
+import WhatsNewKit
 
 @main
 struct LightCommanderApp: App {
@@ -26,9 +27,11 @@ struct LightCommanderApp: App {
                         DeviceView(device: device)
                     }
             }
+            .whatsNewSheet()
             .frame(width: 506, height: 405)
         }
         .environment(uiState)
+        .environment(\.whatsNew, WhatsNewProvider.environment)
         .windowResizability(.contentSize)
         
         Settings {

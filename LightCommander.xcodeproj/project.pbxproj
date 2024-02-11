@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C702F10B2B6D03F200499665 /* Focusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C702F10A2B6D03F200499665 /* Focusable.swift */; };
-		C702F10D2B6D51EF00499665 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C702F10C2B6D51EF00499665 /* Logging.swift */; };
+		C702F10D2B6D51EF00499665 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C702F10C2B6D51EF00499665 /* Logger.swift */; };
 		C70D8D702B460C4C00AB139E /* OnMouseDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70D8D6F2B460C4C00AB139E /* OnMouseDown.swift */; };
 		C744F1F52B73F4C900E875D7 /* QueriedDeviceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C744F1F42B73F4C900E875D7 /* QueriedDeviceState.swift */; };
 		C751FBDE2B5019AE007E61E5 /* DeviceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751FBDD2B5019AE007E61E5 /* DeviceState.swift */; };
@@ -24,6 +24,9 @@
 		C7A4B1702B63C5ED0022592C /* ColorPickerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A4B16F2B63C5ED0022592C /* ColorPickerMode.swift */; };
 		C7A4B1742B63CC4D0022592C /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A4B1732B63CC4D0022592C /* UserSettings.swift */; };
 		C7A4B17D2B63DAC70022592C /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A4B17C2B63DAC70022592C /* Preset.swift */; };
+		C7A7E8D52B78F28600D70648 /* WhatsNewKit in Frameworks */ = {isa = PBXBuildFile; productRef = C7A7E8D42B78F28600D70648 /* WhatsNewKit */; };
+		C7A7E8D72B794A6600D70648 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A7E8D62B794A6600D70648 /* Notification.swift */; };
+		C7A7E8D92B797A2500D70648 /* WhatsNewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A7E8D82B797A2500D70648 /* WhatsNewProvider.swift */; };
 		C7B07EC72B4088D80092AF3F /* LightCommanderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B07EC62B4088D80092AF3F /* LightCommanderApp.swift */; };
 		C7B07ECD2B4088D90092AF3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7B07ECC2B4088D90092AF3F /* Assets.xcassets */; };
 		C7B07ED02B4088D90092AF3F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7B07ECF2B4088D90092AF3F /* Preview Assets.xcassets */; };
@@ -51,7 +54,7 @@
 
 /* Begin PBXFileReference section */
 		C702F10A2B6D03F200499665 /* Focusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Focusable.swift; sourceTree = "<group>"; };
-		C702F10C2B6D51EF00499665 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		C702F10C2B6D51EF00499665 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		C70D8D6F2B460C4C00AB139E /* OnMouseDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnMouseDown.swift; sourceTree = "<group>"; };
 		C744F1F42B73F4C900E875D7 /* QueriedDeviceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueriedDeviceState.swift; sourceTree = "<group>"; };
 		C751FBDD2B5019AE007E61E5 /* DeviceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceState.swift; sourceTree = "<group>"; };
@@ -67,6 +70,8 @@
 		C7A4B16F2B63C5ED0022592C /* ColorPickerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerMode.swift; sourceTree = "<group>"; };
 		C7A4B1732B63CC4D0022592C /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		C7A4B17C2B63DAC70022592C /* Preset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
+		C7A7E8D62B794A6600D70648 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		C7A7E8D82B797A2500D70648 /* WhatsNewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewProvider.swift; sourceTree = "<group>"; };
 		C7B07EC32B4088D80092AF3F /* LightCommander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LightCommander.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7B07EC62B4088D80092AF3F /* LightCommanderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightCommanderApp.swift; sourceTree = "<group>"; };
 		C7B07ECC2B4088D90092AF3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7A7E8D52B78F28600D70648 /* WhatsNewKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,7 +252,7 @@
 				C70D8D712B460F7500AB139E /* Modifiers */,
 				C7CECDAD2B44C15F0092647F /* Wrappers */,
 				C7CECDAA2B44B4D30092647F /* Extensions */,
-				C702F10C2B6D51EF00499665 /* Logging.swift */,
+				C7A7E8D82B797A2500D70648 /* WhatsNewProvider.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -254,8 +260,10 @@
 		C7CECDAA2B44B4D30092647F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C702F10C2B6D51EF00499665 /* Logger.swift */,
 				C7CECDAB2B44B4DD0092647F /* Color.swift */,
 				C751FBE22B502ECA007E61E5 /* NSColor.swift */,
+				C7A7E8D62B794A6600D70648 /* Notification.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -346,6 +354,7 @@
 			);
 			name = LightCommander;
 			packageProductDependencies = (
+				C7A7E8D42B78F28600D70648 /* WhatsNewKit */,
 			);
 			productName = LightCommander;
 			productReference = C7B07EC32B4088D80092AF3F /* LightCommander.app */;
@@ -376,6 +385,7 @@
 			);
 			mainGroup = C7B07EBA2B4088D80092AF3F;
 			packageReferences = (
+				C7A7E8D32B78F28600D70648 /* XCRemoteSwiftPackageReference "WhatsNewKit" */,
 			);
 			productRefGroup = C7B07EC42B4088D80092AF3F /* Products */;
 			projectDirPath = "";
@@ -423,10 +433,11 @@
 				C7EBED962B6A6095008DD039 /* GlobalGeometryGetter.swift in Sources */,
 				C7EDD0D52B4DC462005F0532 /* ToggleDeviceState.swift in Sources */,
 				C7A4B16D2B63BF140022592C /* SettingsView.swift in Sources */,
+				C7A7E8D72B794A6600D70648 /* Notification.swift in Sources */,
 				C7B07EC72B4088D80092AF3F /* LightCommanderApp.swift in Sources */,
 				C7E042892B4722A50056BEDE /* DataController.swift in Sources */,
 				C767CCE92B72A9D100A1CD80 /* SetDeviceState.swift in Sources */,
-				C702F10D2B6D51EF00499665 /* Logging.swift in Sources */,
+				C702F10D2B6D51EF00499665 /* Logger.swift in Sources */,
 				C7CECDAC2B44B4DD0092647F /* Color.swift in Sources */,
 				C7B07EE02B40B2B50092AF3F /* DevicesView.swift in Sources */,
 				C767CCE72B72A5C000A1CD80 /* QueryDeviceState.swift in Sources */,
@@ -439,6 +450,7 @@
 				C7F621162B4867E00065D577 /* ControllerError.swift in Sources */,
 				C751FBE62B51B203007E61E5 /* DeviceEntity.swift in Sources */,
 				C7A4B1742B63CC4D0022592C /* UserSettings.swift in Sources */,
+				C7A7E8D92B797A2500D70648 /* WhatsNewProvider.swift in Sources */,
 				C7BEC7652B630DC20057835B /* HexColorPicker.swift in Sources */,
 				C744F1F52B73F4C900E875D7 /* QueriedDeviceState.swift in Sources */,
 			);
@@ -583,13 +595,13 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = LightCommander;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© Copyright 2024, Martynas Skrebė";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.martynaskre.LightCommander;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -613,13 +625,13 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = LightCommander;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© Copyright 2024, Martynas Skrebė";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.martynaskre.LightCommander;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -649,6 +661,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C7A7E8D32B78F28600D70648 /* XCRemoteSwiftPackageReference "WhatsNewKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SvenTiigi/WhatsNewKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C7A7E8D42B78F28600D70648 /* WhatsNewKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C7A7E8D32B78F28600D70648 /* XCRemoteSwiftPackageReference "WhatsNewKit" */;
+			productName = WhatsNewKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C7B07EBB2B4088D80092AF3F /* Project object */;
 }

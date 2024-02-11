@@ -96,6 +96,9 @@ struct DevicesView: View {
             
             focusedDevice = .row(id: viewModel.renaming)
         }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name.discoverDevices)) { _ in
+            viewModel.findDevices()
+        }
         .animation(.easeInOut, value: viewModel.devices)
         .navigationTitle("Devices")
         .toolbar {
