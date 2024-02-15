@@ -24,7 +24,7 @@ This application offers an easy way to interact with Magic Home devices. Current
 
 ## Installation
 
-You'll need **macOS Sonoma and above (>= 14.0)** to run Lightcommander.
+You'll need **macOS Sonoma and above (>= 14.0)** to run LightCommander.
 Releases come as universal bundles, and run natively on
 both Apple Silicon and Intel.
 
