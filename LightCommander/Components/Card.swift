@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Card<Content: View>: View {
+    @Environment(\.colorScheme) private var colorScheme
+    
     var icon: String
     var title: String
     var showDivider = true
@@ -33,7 +35,7 @@ struct Card<Content: View>: View {
             .padding(10)
             .background(
                 RoundedRectangle(cornerRadius: 10)
-                    .foregroundColor(Color.black.opacity(0.2))
+                    .foregroundColor(colorScheme == .dark ? Color.black.opacity(0.2) : Color.black.opacity(0.06))
             )
             .clipShape(RoundedRectangle(cornerRadius: 10))
         }
@@ -42,7 +44,7 @@ struct Card<Content: View>: View {
 
 #Preview {
     Card(icon: "pencil.circle", title: "Test") {
-        Text("sw")
+        Text("Test")
     }
     .padding()
 }
