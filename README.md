@@ -34,6 +34,10 @@ All releases are available at [GitHub Releases](https://github.com/martynaskre/L
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+## Credits
+
+- Application icon and related artwork by [Justas Gindrėnas](https://jugin.lt/)
+
 ## License
 
 [MIT](LICENSE)
