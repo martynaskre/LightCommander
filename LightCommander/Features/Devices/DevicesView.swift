@@ -84,6 +84,11 @@ struct DevicesView: View {
         .onAppear {
             viewModel.queryState()
         }
+        .onChange(of: uiState.navigationPath) {
+            if uiState.navigationPath.isEmpty {
+                viewModel.queryState()
+            }
+        }
         .onChange(of: viewModel.devices) {
             viewModel.queryState()
         }

@@ -80,7 +80,7 @@ struct DevicePreviewView: View {
 }
 
 #Preview {
-    let context = DataController.previewContainer.mainContext
+    let context = DataController.shared.container.mainContext
     
     let state = DeviceState(on: false, color: .green)
     let device = Device(id: "123456", name: "Device", address: NWEndpoint.Host("127.0.0.1"), available: true, state: state)

@@ -38,6 +38,7 @@
 		C7BEC7672B630EF20057835B /* RgbColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BEC7662B630EF20057835B /* RgbColorPicker.swift */; };
 		C7CECDAC2B44B4DD0092647F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CECDAB2B44B4DD0092647F /* Color.swift */; };
 		C7CECDAF2B44C16C0092647F /* DebouncedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CECDAE2B44C16C0092647F /* DebouncedState.swift */; };
+		C7D1B8332B7E59470016A9E0 /* ProcessInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D1B8322B7E59470016A9E0 /* ProcessInfo.swift */; };
 		C7E0425E2B4706280056BEDE /* DevicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E0425D2B4706280056BEDE /* DevicesViewModel.swift */; };
 		C7E042602B47087E0056BEDE /* EditableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E0425F2B47087E0056BEDE /* EditableText.swift */; };
 		C7E042672B470F3D0056BEDE /* MagicHomeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E042662B470F3D0056BEDE /* MagicHomeClient.swift */; };
@@ -85,6 +86,7 @@
 		C7BEC7662B630EF20057835B /* RgbColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RgbColorPicker.swift; sourceTree = "<group>"; };
 		C7CECDAB2B44B4DD0092647F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		C7CECDAE2B44C16C0092647F /* DebouncedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebouncedState.swift; sourceTree = "<group>"; };
+		C7D1B8322B7E59470016A9E0 /* ProcessInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessInfo.swift; sourceTree = "<group>"; };
 		C7E0425D2B4706280056BEDE /* DevicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewModel.swift; sourceTree = "<group>"; };
 		C7E0425F2B47087E0056BEDE /* EditableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableText.swift; sourceTree = "<group>"; };
 		C7E042662B470F3D0056BEDE /* MagicHomeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicHomeClient.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				C7CECDAB2B44B4DD0092647F /* Color.swift */,
 				C751FBE22B502ECA007E61E5 /* NSColor.swift */,
 				C7A7E8D62B794A6600D70648 /* Notification.swift */,
+				C7D1B8322B7E59470016A9E0 /* ProcessInfo.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7D1B8332B7E59470016A9E0 /* ProcessInfo.swift in Sources */,
 				C7CECDAF2B44C16C0092647F /* DebouncedState.swift in Sources */,
 				C7E042932B476B460056BEDE /* DeviceViewModel.swift in Sources */,
 				C70D8D702B460C4C00AB139E /* OnMouseDown.swift in Sources */,
