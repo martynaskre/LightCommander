@@ -14,29 +14,97 @@ jobs:
     runs-on: macos-14
     
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-        
-    - name: Build Application
-      id: build
-      run: |
-        xcodebuild \
-          -project LightCommander.xcodeproj \
-          -scheme LightCommander \
-          -configuration Release
-        
-        echo "APPLICATION_PATH=$(xcodebuild -project LightCommander.xcodeproj -scheme LightCommander -configuration Release -showBuildSettings 2>/dev/null | awk '$1 == "BUILD_DIR" {print $3; exit}')" >> $GITHUB_OUTPUT
+      - name: Checkout
+        uses: actions/checkout@v4
+    
+      - uses: actions/cache@v4
+        name: Cache Derived Data
+        with:
+          path: |
+            ${{ runner.temp }}/DerivedData/Build
+            ${{ runner.temp }}/DerivedData/SourcePackages
+          key: ${{ runner.os }}-derivedData-cache-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-derivedData-cache-
 
-    - name: Create DMG
-      run: |
-        npm i -g create-dmg
-        create-dmg ${{ steps.build.outputs.APPLICATION_PATH }}/Release/LightCommander.app --overwrite --dmg-title=LightCommander || true
-        find . -maxdepth 1 -type f -name 'LightCommander*.dmg' -print -quit | while read -r file; do [ -f "$file" ] && mv "$file" "$(echo "$file" | sed 's/LightCommander.*\.dmg/LightCommander.dmg/')"; done
+      - name: Avoid Inode Changes
+        run: defaults write com.apple.dt.XCBuild IgnoreFileSystemDeviceInodeChanges -bool YES
 
-    - name: Upload Application DMG
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: LightCommander.dmg
-        tag: ${{ github.ref }}
-        overwrite: true
+      - uses: actions/cache@v4
+        name: Cache SPM Packages
+        with:
+          path: ${{ runner.temp }}/DerivedData/SourcePackages/checkouts
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+
+      - name: Import Certificates
+        env:
+          CERTIFICATE_BASE64: ${{ secrets.DISTRIBUTION_CERTIFICATE }}
+          CERTIFICATE_PASSWORD: ${{ secrets.DISTRIBUTION_CERTIFICATE_PASSWORD }}
+        run: |
+          CERTIFICATE_PATH=$RUNNER_TEMP/certificate.p12
+          KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
+          KEYCHAIN_PASSWORD=$(openssl rand -base64 24)
+
+          security create-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+          security set-keychain-settings -lut 1800 $KEYCHAIN_PATH
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+
+          echo -n "$CERTIFICATE_BASE64" | base64 --decode --output $CERTIFICATE_PATH
+          security import $CERTIFICATE_PATH -P "$CERTIFICATE_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
+
+          security list-keychain -d user -s $KEYCHAIN_PATH
+
+      - name: Import Provisioning Profile
+        env:
+          PROVISIONING_PROFILE: ${{ secrets.DISTRIBUTION_PROVISIONING_PROFILE }}
+        run: |
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          echo -n "$PROVISIONING_PROFILE" | \
+            base64 --decode -o ~/Library/MobileDevice/Provisioning\ Profiles/profile.provisionprofile
+      
+      - name: Build LightCommander
+        env:
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          xcodebuild \
+            -scheme LightCommander \
+            -configuration Release \
+            -derivedDataPath "$RUNNER_TEMP/DerivedData" \
+            -archivePath "$RUNNER_TEMP/LightCommander.xcarchive" \
+            archive \
+            DEVELOPMENT_TEAM=$APPLE_TEAM_ID
+
+      - name: Create DMG
+        run: |
+          npm i -g create-dmg
+          create-dmg "$RUNNER_TEMP/LightCommander.xcarchive/Products/Applications/LightCommander.app"
+          find . -maxdepth 1 -type f -name 'LightCommander*.dmg' -print -quit | while read -r file; do [ -f "$file" ] && mv "$file" "$(echo "$file" | sed 's/LightCommander.*\.dmg/LightCommander.dmg/')"; done
+      
+      - name: Notarize Release Build
+        env:
+          APPLE_USERNAME: ${{ secrets.APPLE_USERNAME }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
+        run: |
+          xcrun notarytool store-credentials "LightCommander" \
+            --apple-id $APPLE_USERNAME \
+            --team-id $APPLE_TEAM_ID \
+            --password $APPLE_PASSWORD
+          xcrun notarytool submit LightCommander.dmg --keychain-profile "LightCommander" --wait
+          xcrun stapler staple LightCommander.dmg
+      
+      - name: Upload Release Bundle
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: LightCommander.dmg
+          tag: ${{ github.ref }}
+          overwrite: true
+      
+      - name: Clean Up Keychain
+        if: ${{ always() }}
+        run: |
+          security delete-keychain $RUNNER_TEMP/app-signing.keychain-db
+          rm -rf "~/Library/MobileDevice/Provisioning Profiles"
